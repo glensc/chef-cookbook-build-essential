@@ -26,4 +26,5 @@ potentially_at_compile_time do
   package 'kernel-module-build'
   package 'make'
   package 'm4'
+  package 'patch'
 end
