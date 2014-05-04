@@ -2,7 +2,7 @@
 # Cookbook Name:: build-essential
 # Recipe:: pld
 #
-# Copyright 2013, Opscode, Inc.
+# Copyright 2013-2014, Opscode, Inc.
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -17,20 +17,13 @@
 # limitations under the License.
 #
 
-%w{
-  autoconf
-  bison
-  flex
-  gcc
-  libstdc++-devel
-  kernel-module-build
-  make
-  m4
-}.each do |pkg|
-
-  r = package pkg do
-    action( node['build_essential']['compiletime'] ? :nothing : :install )
-  end
-  r.run_action(:install) if node['build_essential']['compiletime']
-
+potentially_at_compile_time do
+  package 'autoconf'
+  package 'bison'
+  package 'flex'
+  package 'gcc'
+  package 'libstdc++-devel'
+  package 'kernel-module-build'
+  package 'make'
+  package 'm4'
 end
